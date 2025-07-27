@@ -21,7 +21,7 @@ Content-Type: application/json
 @eventId = {{ createEvent.response.body.id }}
 
 ###
-PATCH  http://localhost:3000/events/{{{eventId}}}
+PATCH  http://localhost:3000/events/{{eventId}}
 Content-Type: application/json
 
 {
@@ -29,4 +29,17 @@ Content-Type: application/json
 }
 
 ###
-DELETE  http://localhost:3000/events/{{{eventId}}}
+DELETE  http://localhost:3000/events/{{eventId}}
+
+
+###
+GET  http://localhost:3000/events/{{eventId}}/spots
+
+###
+# @name createSpot
+POST http://localhost:3000/events/{{eventId}}/spots
+Content-Type: application/json
+
+{
+    "name": "Spot 1"
+}
