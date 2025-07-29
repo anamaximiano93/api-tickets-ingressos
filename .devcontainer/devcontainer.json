@@ -17,31 +17,37 @@
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
 	"workspaceFolder": "/home/node/app",
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": true,
-			"installOhMyZsh": true,
-			"installOhMyZshConfig": true,
-			"upgradePackages": true,
-			"username": "devcontainer",
-			"userUid": "automatic",
-			"userGid": "automatic"
-		},
-		"ghcr.io/stuartleeks/dev-container-features/shell-history:0": {},
-		"ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
-			"plugins": "git git-flow F-Fy-H zsh-autosuggestions zsh-completions",
-			"omzPlugins": "https://github.com/z-shell/F-Sy-H https://github.com/zsh-users/zsh-autosuggestions/ https://github.com/zsh-users/zsh-completions/"
-		}
-	},
+"features": {
+  "ghcr.io/devcontainers/features/common-utils:2": {
+    "installZsh": true,
+    "installOhMyZsh": true,
+    "installOhMyZshConfig": true,
+    "upgradePackages": true
+  },
+  "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
+    "historyDir": "/dc/shellhistory"
+  },
+  "ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
+    "plugins": "git git-flow",
+    "externalPlugins": "https://github.com/z-shell/F-Sy-H https://github.com/zsh-users/zsh-autosuggestions https://github.com/zsh-users/zsh-completions"
+  }
+}
+
+
+	,
 	"customizations": {
-		"vscode": {
-			"extensions": [
-				"prisma.prima",
-				"esbenp.prettier-vscode",
-				"dbaeumer.vscode-esLint"
-			]
-		}
-	}
+  "vscode": {
+    "extensions": [
+      "Prisma.prisma",
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint"
+    ]
+  }
+},
+"mounts": [
+  "source=${localEnv:HOME}/.shellhistory,target=/dc/shellhistory,type=bind"
+]
+
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
