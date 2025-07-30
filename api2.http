@@ -1,0 +1,60 @@
+
+GET http://localhost:3001/eventos
+
+###
+GET http://localhost:3001/eventos/98dd31ae-d5cb-4555-8e69-33ee3f8b1ddb
+
+
+###
+# @name createEvent
+POST http://localhost:3001/eventos
+Content-Type: application/json
+
+{
+    "nome": "Teste",
+    "descricao": "Teste do Teste",
+    "data": "2017-01-01T00:00:00",
+    "preco": 100
+}
+
+### 
+@eventoId = {{ createEvent.response.body.id }}
+
+###
+PATCH  http://localhost:3001/eventos/{{eventoId}}
+Content-Type: application/json
+
+{
+    "name": "las vegas"
+}
+
+###
+DELETE  http://localhost:3001/eventos/{{eventoId}}
+
+
+###
+GET  http://localhost:3001/eventos/{{eventoId}}/lugares
+
+###
+# @name createSpot
+POST http://localhost:3001/eventos/{{eventoId}}/lugares
+Content-Type: application/json
+
+{
+    "name": "Spot 3"
+}
+
+### 
+@spotName = {{ createSpot.response.body.name }}
+
+###
+
+POST http://localhost:3001/eventos/{{eventoId}}/reservar
+Content-Type: application/json
+
+{
+    "spots": ["{{ spotName }}"],
+    "ticket_kind": "full",
+    "email": "test@test.com"
+}
+
