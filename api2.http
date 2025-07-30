@@ -25,7 +25,7 @@ PATCH  http://localhost:3001/eventos/{{eventoId}}
 Content-Type: application/json
 
 {
-    "name": "las vegas"
+    "nome": "las vegas"
 }
 
 ###
@@ -41,7 +41,7 @@ POST http://localhost:3001/eventos/{{eventoId}}/lugares
 Content-Type: application/json
 
 {
-    "name": "Spot 3"
+    "nome": "Spot 3"
 }
 
 ### 
@@ -51,10 +51,11 @@ Content-Type: application/json
 
 POST http://localhost:3001/eventos/{{eventoId}}/reservar
 Content-Type: application/json
+x-api-token:000
 
 {
-    "spots": ["{{ spotName }}"],
-    "ticket_kind": "full",
+    "lugares": ["{{ spotName }}"],
+    "tipo_ingresso": "full",
     "email": "test@test.com"
 }
 

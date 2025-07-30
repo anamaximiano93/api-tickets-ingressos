@@ -7,8 +7,7 @@
     "webpack": true,
     "tsConfigPath": "apps/partner1/tsconfig.app.json"
   },
-  "projects": {
-    
+  "projects": { 
     "core": {
       "type": "library",
       "root": "libs/core",
